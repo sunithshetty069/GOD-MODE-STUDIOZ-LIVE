@@ -612,5 +612,93 @@ document.addEventListener('keydown',function(e){
 });
 
 </script>
+
+<!-- Botpress Webchat -->
+<script src="https://cdn.botpress.cloud/webchat/v3.6/inject.js"></script>
+<script src="https://files.bpcontent.cloud/2026/03/13/05/20260313055643-DM1L3581.js" defer></script>
+
+<!-- GodMode custom styling for Botpress widget -->
+<style>
+  /* Hide default Botpress branding */
+  #bp-web-widget-container .bpw-powered,
+  #bp-web-widget-container [class*="powered"],
+  #bp-web-widget-container [class*="branding"] {
+    display: none !important;
+  }
+
+  /* Widget button — red glow */
+  #bp-web-widget-container .bpw-floating-button,
+  #bp-web-widget-container button[class*="fab"],
+  div[id*="botpress"] button {
+    background: #c8000a !important;
+    box-shadow: 0 0 24px rgba(200,0,10,.5) !important;
+    border: none !important;
+  }
+
+  /* Chat window */
+  #bp-web-widget-container .bpw-layout,
+  #bp-web-widget-container [class*="layout"] {
+    border: 1px solid rgba(200,0,10,.25) !important;
+    border-radius: 12px !important;
+    box-shadow: 0 0 40px rgba(200,0,10,.15), 0 20px 60px rgba(0,0,0,.6) !important;
+    font-family: 'Space Grotesk', sans-serif !important;
+  }
+
+  /* Header */
+  #bp-web-widget-container .bpw-header-container,
+  #bp-web-widget-container [class*="header"] {
+    background: #0a0a0a !important;
+    border-bottom: 1px solid rgba(200,0,10,.3) !important;
+  }
+
+  /* Bot messages */
+  #bp-web-widget-container .bpw-from-bot .bpw-chat-bubble {
+    background: #111 !important;
+    color: #fff !important;
+    border: 1px solid rgba(255,255,255,.07) !important;
+  }
+
+  /* User messages */
+  #bp-web-widget-container .bpw-from-user .bpw-chat-bubble {
+    background: #c8000a !important;
+    color: #fff !important;
+  }
+
+  /* Input area */
+  #bp-web-widget-container .bpw-composer {
+    background: #0a0a0a !important;
+    border-top: 1px solid rgba(255,255,255,.07) !important;
+  }
+
+  #bp-web-widget-container .bpw-composer textarea,
+  #bp-web-widget-container .bpw-composer input {
+    background: #111 !important;
+    color: #fff !important;
+    border: 1px solid rgba(255,255,255,.1) !important;
+    border-radius: 6px !important;
+    font-family: 'Space Grotesk', sans-serif !important;
+  }
+
+  /* Send button */
+  #bp-web-widget-container .bpw-send-button,
+  #bp-web-widget-container button[class*="send"] {
+    background: #c8000a !important;
+    border-radius: 6px !important;
+  }
+</style>
+
+<script>
+  // Auto-open with welcome message after 8 seconds
+  window.addEventListener('load', function() {
+    setTimeout(function() {
+      try {
+        if (window.botpressWebChat) {
+          window.botpressWebChat.sendEvent({ type: 'proactive-trigger', channel: 'web', payload: { text: '👁 What can GodMode do for your film?' } });
+        }
+      } catch(e) {}
+    }, 8000);
+  });
+</script>
+
 </body>
 </html>
