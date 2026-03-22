@@ -158,6 +158,74 @@ footer{padding:36px 48px 20px;background:var(--bg2);border-top:1px solid rgba(25
 
 @keyframes flicker{0%,100%{opacity:1}47%,53%{opacity:.06}49%,51%{opacity:1}50%{opacity:.04}}
 .flick{color:var(--r);animation:flicker 3.2s ease-in-out infinite}
+
+/* ── MOBILE ONLY FIXES (max-width:640px) ── */
+@media(max-width:640px){
+
+  /* NAV */
+  #nav{padding:12px 18px}
+  .nav-logo img{height:20px}
+
+  /* HERO — tighter padding, smaller type, no excess gap */
+  .hire-hero{padding:90px 5% 60px;justify-content:center;min-height:100svh}
+  .hero-content{gap:0}
+
+  /* Eyebrow — hide the lines, just show text centred, no wrap issue */
+  .eyebrow{font-size:7.5px;letter-spacing:.18em;gap:6px;margin-bottom:20px;flex-wrap:nowrap;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
+  .eyebrow-line{display:none}
+
+  /* Hero headings — significantly smaller on mobile */
+  .hl.l1 span{font-size:clamp(34px,10vw,52px)}
+  .hl.l2 span{font-size:clamp(36px,10.5vw,56px)}
+  .hero-h1{margin-bottom:16px}
+
+  /* Sub text */
+  .hero-sub{font-size:13px;margin-bottom:28px;max-width:100%;line-height:1.75}
+
+  /* Button */
+  .btn-ghost-sm{font-size:8.5px;letter-spacing:.12em;padding:9px 22px}
+
+  /* Scroll hint */
+  .hero-scroll{right:16px;bottom:16px}
+
+  /* Sections padding */
+  .intro-section{padding:44px 18px;gap:20px}
+  .roles-section{padding:44px 18px}
+  .fresher-section{padding:44px 18px}
+  .cta-section{padding:56px 18px}
+  .rs-head{margin-bottom:28px}
+
+  /* Roles grid — single column */
+  .roles-grid{grid-template-columns:1fr;gap:2px}
+  .role-card{padding:24px 20px}
+  .role-title{font-size:16px}
+  .role-copy{font-size:12px}
+
+  /* Fresher section — stack */
+  .fresher-inner{grid-template-columns:1fr;gap:24px}
+  .fr-h{font-size:18px}
+  .fresher-box{padding:22px 18px}
+
+  /* CTA */
+  .cta-h{font-size:clamp(22px,7vw,32px)}
+  .cta-sub{font-size:12px;margin-bottom:32px}
+  .glow-btn{padding:13px 32px;font-size:10px;letter-spacing:.14em}
+
+  /* Footer */
+  footer{padding:28px 18px 16px}
+  .ft-inner{flex-direction:column;align-items:flex-start;gap:14px}
+  .ft-logo img{height:18px}
+  .ft-bottom{flex-direction:column;align-items:flex-start;gap:6px}
+
+  /* Intro section heading */
+  .is-h{font-size:20px}
+  .is-body{font-size:12px}
+
+  /* Vibe grid */
+  .vibe-item{padding:24px 18px}
+  .vibe-h{font-size:13px}
+  .vibe-p{font-size:11.5px}
+}
 </style>
 </head>
 <body>
@@ -312,7 +380,7 @@ footer{padding:36px 48px 20px;background:var(--bg2);border-top:1px solid rgba(25
       <div class="ft-tagline">India's first multimedia production house for films.</div>
     </div>
     <div class="ft-socials">
-      <a href="mailto:godmodestudiozhq@gmail.com" class="ft-soc" title="Email">
+      <a href="/cdn-cgi/l/email-protection#2e49414a43414a4b5d5a5b4a474154465f6e49434f4742004d4143" class="ft-soc" title="Email">
         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
       </a>
       <a href="https://www.instagram.com/godmodestudioz/" target="_blank" class="ft-soc" title="Instagram">
@@ -328,11 +396,11 @@ footer{padding:36px 48px 20px;background:var(--bg2);border-top:1px solid rgba(25
   </div>
   <div class="ft-bottom">
     <span class="ft-copy">© 2026 GodMode Studioz. Bengaluru, India.</span>
-    <a href="mailto:godmodestudiozhq@gmail.com" class="ft-contact">godmodestudiozhq@gmail.com</a>
+    <a href="/cdn-cgi/l/email-protection#9ff8f0fbf2f0fbfaecebeafbf6f0e5f7eedff8f2fef6f3b1fcf0f2" class="ft-contact"><span class="__cf_email__" data-cfemail="9ff8f0fbf2f0fbfaecebeafbf6f0e5f7eedff8f2fef6f3b1fcf0f2">[email&#160;protected]</span></a>
   </div>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 (function(){
   var dot=document.getElementById('cur'),blob=document.getElementById('cur-blob');
   if(!dot||!blob)return;
@@ -343,9 +411,4 @@ footer{padding:36px 48px 20px;background:var(--bg2);border-top:1px solid rgba(25
 })();
 (function(){
   var obs=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting)x.target.classList.add('in');});},{threshold:.08});
-  document.querySelectorAll('.rv').forEach(function(el){obs.observe(el);});
-})();
-document.querySelectorAll('a[href^="#"]').forEach(function(a){a.addEventListener('click',function(e){var t=document.querySelector(this.getAttribute('href'));if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'});}});});
-</script>
-</body>
-</html>
+  document.querySelectorAll('.rv').forEach(f
