@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=5">
+<meta name="theme-color" content="#000000">
+<title>We're Hiring — GodMode Studioz</title>
+<meta name="description" content="GodMode Studioz is hiring. A studio for people exactly like you. Bengaluru. Full-time. 2026.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{overflow-x:hidden;scroll-behavior:smooth;-webkit-tap-highlight-color:transparent}
+body{background:#000;color:#fff;font-family:'Space Grotesk',sans-serif;font-weight:300;cursor:none;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+a{text-decoration:none;color:inherit}
+button{background:none;border:none;color:inherit;font-family:inherit;cursor:none}
+:root{
+  --r:#c8000a;
+  --g:rgba(255,255,255,.42);
+  --bg2:#080808;
+  --ease:cubic-bezier(.19,1,.22,1);
+  --ls:-0.05em;
+}
+#cur{position:fixed;top:0;left:0;width:7px;height:7px;background:var(--r);border-radius:50%;z-index:9999;pointer-events:none;transform:translate(-50%,-50%);will-change:transform}
+#cur-blob{position:fixed;top:0;left:0;width:32px;height:32px;background:#000;border-radius:50%;z-index:9997;pointer-events:none;transform:translate(-50%,-50%);mix-blend-mode:difference;transition:width .5s var(--ease),height .5s var(--ease);will-change:transform}
+body.hov #cur-blob{width:64px;height:64px}
+body.hov #cur{opacity:0}
+@media(hover:none){#cur,#cur-blob{display:none}}
+.noise{position:absolute;inset:0;pointer-events:none;opacity:.03;z-index:1;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");background-size:180px}
+#nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:20px 44px;display:flex;align-items:center;justify-content:space-between}
+#nav::before{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,.96) 0%,rgba(0,0,0,.6) 72%,transparent 100%);backdrop-filter:blur(12px);z-index:-1}
+.nav-right{font-size:10px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.28);display:flex;align-items:center;gap:8px}
+.nav-dot{width:3px;height:3px;background:var(--r);border-radius:50%;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(1.6)}}
+@media(max-width:640px){#nav{padding:14px 18px}.nav-right{font-size:9px}}
+.hire-hero{min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:140px 6% 80px;position:relative;overflow:hidden;background:#000}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.013) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.013) 1px,transparent 1px);background-size:80px 80px;z-index:1}
+.hero-vig{position:absolute;inset:0;background:radial-gradient(ellipse 80% 70% at 50% 50%,transparent 30%,rgba(0,0,0,.75) 100%);z-index:2;pointer-events:none}
+.hero-content{position:relative;z-index:3;display:flex;flex-direction:column;align-items:center;gap:0;width:100%;max-width:900px}
+.eyebrow{font-size:10px;font-weight:500;letter-spacing:.32em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:36px;display:flex;align-items:center;gap:10px;opacity:0;animation:fadeup .7s .4s var(--ease) forwards}
+.eyebrow-line{width:24px;height:1px;background:var(--r)}
+.eyebrow em{color:var(--r);font-style:normal}
+.hero-h1{margin-bottom:30px;text-align:center}
+.hl{overflow:hidden;display:block;line-height:1}
+.hl span{display:block;opacity:0;animation:lineUp .85s var(--ease) forwards;padding-bottom:.06em}
+.hl.l1 span{animation-delay:.5s;font-size:clamp(48px,9vw,130px);font-weight:300;letter-spacing:-.03em;color:#fff}
+.hl.l1 span em{font-style:normal;font-weight:600}
+.hl.l2 span{animation-delay:.68s;font-size:clamp(52px,10vw,144px);font-weight:600;letter-spacing:-.03em;color:var(--r)}
+@keyframes lineUp{to{transform:none;opacity:1}from{transform:translateY(108%);opacity:0}}
+@keyframes fadeup{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.hero-sub{font-size:clamp(13px,1.4vw,16px);font-weight:300;color:var(--g);line-height:1.9;letter-spacing:var(--ls);margin-bottom:52px;opacity:0;animation:fadeup .7s 1s var(--ease) forwards;max-width:540px;text-align:center}
+.cta-row{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;opacity:0;animation:fadeup .7s 1.2s var(--ease) forwards}
+.btn-primary{padding:14px 36px;background:var(--r);font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#fff;border-radius:50px;position:relative;overflow:hidden;transition:box-shadow .3s}
+.btn-primary::before{content:'';position:absolute;inset:0;background:rgba(255,255,255,.1);opacity:0;transition:opacity .3s}
+.btn-primary:hover::before{opacity:1}
+.btn-primary:hover{box-shadow:0 0 28px rgba(200,0,10,.5)}
+.btn-ghost{padding:14px 36px;font-size:11px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.5);border:1px solid rgba(255,255,255,.1);border-radius:50px;transition:all .3s}
+.btn-ghost:hover{color:#fff;border-color:rgba(200,0,10,.4);background:rgba(200,0,10,.06)}
+.hero-scroll{position:absolute;bottom:28px;right:44px;z-index:3;display:flex;align-items:center;gap:8px;opacity:0;animation:fadeup .6s 1.6s var(--ease) forwards}
+.hs-line{width:34px;height:1px;background:rgba(255,255,255,.1);position:relative;overflow:hidden}
+.hs-line::after{content:'';position:absolute;inset:0;background:var(--r);animation:scrollln 2s 1.7s ease-in-out infinite}
+.hs-txt{font-size:8.5px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.16)}
+@keyframes scrollln{0%,100%{transform:scaleX(0);transform-origin:left}49%{transform:scaleX(1);transform-origin:left}50%{transform-origin:right}99%{transform:scaleX(0);transform-origin:right}}
+@keyframes flicker{0%,100%{opacity:1}47%,53%{opacity:.06}49%,51%{opacity:1}50%{opacity:.04}}
+.flick{color:var(--r);animation:flicker 3.2s ease-in-out infinite}
+.marq-wrap{padding:13px 0;overflow:hidden;background:var(--bg2);border-top:1px solid rgba(255,255,255,.04);border-bottom:1px solid rgba(255,255,255,.04)}
+.marq-track{display:flex;width:max-content;animation:marq 36s linear infinite}
+.marq-wrap:hover .marq-track{animation-play-state:paused}
+.mi{display:inline-flex;align-items:center;gap:0;padding:0;font-size:9px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;white-space:nowrap;color:rgba(255,255,255,.18)}
+.mi.tb{color:var(--r)}
+.mi-dot{width:4px;height:4px;background:var(--r);border-radius:50%;flex-shrink:0;opacity:.7;margin:0 44px}
+@keyframes marq{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+.intro-block{padding:80px 44px;background:var(--bg2);display:grid;grid-template-columns:1fr 1.5fr;gap:72px;align-items:center}
+.ib-tag{font-size:9.5px;font-weight:600;letter-spacing:.26em;text-transform:uppercase;color:var(--r);display:block;margin-bottom:18px}
+.ib-h{font-size:clamp(26px,3.2vw,42px);font-weight:500;line-height:1.1;letter-spacing:-.015em}
+.ib-h em{color:var(--r);font-style:normal}
+.ib-body{font-size:13px;font-weight:300;line-height:1.95;color:var(--g);letter-spacing:var(--ls)}
+.ib-body strong{color:#fff;font-weight:500}
+@media(max-width:768px){.intro-block{grid-template-columns:1fr;gap:32px;padding:56px 18px}}
+.vibe-section{padding:80px 44px;background:#000;border-top:1px solid rgba(255,255,255,.04)}
+.vibe-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
+.vibe-item{padding:32px 26px;border:1px solid rgba(255,255,255,.04);transition:border-color .3s}
+.vibe-item:hover{border-color:rgba(200,0,10,.12)}
+.vibe-label{font-size:9px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--r);margin-bottom:14px;display:block}
+.vibe-h{font-size:17px;font-weight:600;letter-spacing:-.01em;margin-bottom:10px;line-height:1.2}
+.vibe-p{font-size:12px;font-weight:300;line-height:1.85;color:var(--g);letter-spacing:var(--ls)}
+@media(max-width:768px){.vibe-grid{grid-template-columns:1fr}.vibe-section{padding:56px 18px}}
+.roles-section{padding:80px 44px;background:var(--bg2);position:relative;overflow:hidden}
+.rs-head{margin-bottom:52px}
+.rs-tag{font-size:9.5px;font-weight:600;letter-spacing:.26em;text-transform:uppercase;color:var(--r);display:block;margin-bottom:14px}
+.rs-h{font-size:clamp(28px,3.6vw,48px);font-weight:500;line-height:1.08;letter-spacing:-.015em}
+.rs-h em{color:var(--r);font-style:normal}
+.rs-sub{font-size:13px;font-weight:300;color:var(--g);margin-top:14px;max-width:560px;line-height:1.8;letter-spacing:var(--ls)}
+.roles-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:2px}
+.role-card{padding:36px 32px;border:1px solid rgba(255,255,255,.055);background:var(--bg2);position:relative;overflow:hidden;transition:background .4s,border-color .4s}
+.role-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;background:var(--r);transform:scaleY(0);transform-origin:bottom;transition:transform .4s var(--ease)}
+.role-card:hover{background:rgba(255,255,255,.018);border-color:rgba(200,0,10,.16)}
+.role-card:hover::before{transform:scaleY(1)}
+.role-num{font-size:9.5px;font-weight:500;color:rgba(255,255,255,.16);letter-spacing:.1em;margin-bottom:18px;display:block}
+.role-title{font-size:clamp(20px,2.2vw,26px);font-weight:600;line-height:1.15;letter-spacing:-.01em;margin-bottom:14px}
+.role-copy{font-size:13px;font-weight:300;line-height:1.85;color:var(--g);letter-spacing:var(--ls);margin-bottom:22px}
+.role-tags{display:flex;flex-wrap:wrap;gap:5px}
+.role-tag{font-size:8.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:4px 10px;border:1px solid rgba(255,255,255,.06);border-radius:20px;color:rgba(255,255,255,.28);transition:all .3s}
+.role-card:hover .role-tag{border-color:rgba(200,0,10,.2);color:var(--r)}
+@media(max-width:768px){.roles-grid{grid-template-columns:1fr}.roles-section{padding:56px 18px}}
+.form-section{padding:100px 44px;background:#000;text-align:center;position:relative;overflow:hidden}
+.form-section.alt{background:var(--bg2)}
+.fc{position:relative;z-index:1;max-width:800px;margin:0 auto}
+.fc-tag{font-size:9.5px;font-weight:600;letter-spacing:.26em;text-transform:uppercase;color:var(--r);display:block;margin-bottom:20px}
+.fc-h{font-size:clamp(26px,3.8vw,50px);font-weight:300;line-height:1.08;letter-spacing:-.02em;margin-bottom:14px}
+.fc-h em{color:var(--r);font-style:normal;font-weight:600}
+.fc-sub{font-size:14px;font-weight:300;color:var(--g);line-height:1.8;margin-bottom:40px;letter-spacing:var(--ls)}
+.form-embed{border:1px solid rgba(255,255,255,.07);border-radius:4px;overflow:hidden;background:rgba(255,255,255,.01);width:100%}
+.form-embed iframe{display:block;width:100%;border:none}
+.alt-apply{margin-top:24px;font-size:12px;color:rgba(255,255,255,.28);line-height:1.9}
+.alt-apply a{color:var(--r);transition:opacity .3s}
+.alt-apply a:hover{opacity:.7}
+@media(max-width:640px){.form-section{padding:64px 18px}}
+.fresher-section{padding:80px 44px;background:var(--bg2);position:relative;overflow:hidden}
+.fresher-inner{max-width:760px}
+.fs2-tag{font-size:9.5px;font-weight:600;letter-spacing:.26em;text-transform:uppercase;color:var(--r);display:block;margin-bottom:14px}
+.fs2-h{font-size:clamp(26px,3.2vw,44px);font-weight:500;line-height:1.1;letter-spacing:-.015em;margin-bottom:16px}
+.fs2-h em{color:var(--r);font-style:normal}
+.fs2-body{font-size:13px;font-weight:300;line-height:1.95;color:var(--g);letter-spacing:var(--ls);margin-bottom:28px}
+.fs2-body strong{color:#fff;font-weight:500}
+.fs2-list{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:0}
+.fs2-pill{font-size:10px;font-weight:500;letter-spacing:.06em;padding:7px 16px;border:1px solid rgba(255,255,255,.08);border-radius:20px;color:rgba(255,255,255,.4)}
+@media(max-width:640px){.fresher-section{padding:56px 18px}}
+footer{padding:44px 44px 24px;background:var(--bg2);border-top:1px solid rgba(255,255,255,.05)}
+.ft-inner{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:20px;margin-bottom:28px}
+.ft-logo{font-size:17px;font-weight:700;letter-spacing:-.02em}
+.ft-logo em{color:var(--r);font-style:normal}
+.ft-tagline{font-size:11px;font-weight:300;color:rgba(255,255,255,.28);letter-spacing:.04em;margin-top:4px}
+.ft-socials{display:flex;gap:8px}
+.ft-soc{width:36px;height:36px;border-radius:50%;border:1px solid rgba(255,255,255,.07);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.3);transition:all .3s;cursor:none}
+.ft-soc:hover{border-color:var(--r);color:var(--r);background:rgba(200,0,10,.06)}
+.ft-bottom{border-top:1px solid rgba(255,255,255,.05);padding-top:18px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.ft-copy{font-size:10px;color:rgba(255,255,255,.12);letter-spacing:.04em}
+.ft-contact{font-size:10px;color:rgba(255,255,255,.22);letter-spacing:.04em;transition:color .3s}
+.ft-contact:hover{color:var(--r)}
+@media(max-width:640px){footer{padding:36px 18px 18px}.ft-inner{flex-direction:column;align-items:flex-start}}
+.rv{opacity:0;transform:translateY(18px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+.rv.d1{transition-delay:.1s}.rv.d2{transition-delay:.2s}.rv.d3{transition-delay:.3s}
+.rv.in{opacity:1;transform:none}
+.section-divider{width:100%;height:1px;background:rgba(255,255,255,.04)}
+</style>
+</head>
+<body>
+
+<div id="cur"></div>
+<div id="cur-blob"></div>
+
+<nav id="nav">
+  <a href="/">
+    <img src="data:image/png;base64,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" alt="GodMode Studioz" style="height:30px;width:auto;object-fit:contain;max-width:160px">
+  </a>
+  <div class="nav-right">
+    <div class="nav-dot"></div>
+    <span>We're Hiring · 2026</span>
+  </div>
+</nav>
+
+<section class="hire-hero">
+  <div class="hero-grid"></div>
+  <div class="hero-vig"></div>
+  <div class="noise"></div>
+  <div class="hero-content">
+    <div class="eyebrow">
+      <div class="eyebrow-line"></div>
+      GodMode Studioz &nbsp;·&nbsp; <em>Bengaluru · Full Time · 2026</em>
+      <div class="eyebrow-line"></div>
+    </div>
+    <h1 class="hero-h1">
+      <div class="hl l1"><span>hey <em>you!!!</em></span></div>
+      <div class="hl l2"><span class="flick">come home.</span></div>
+    </h1>
+    <p class="hero-sub">
+      you've spent hours perfecting something nobody will notice.<br>
+      <strong style="color:#fff">we will.</strong>
+    </p>
+    <div class="cta-row">
+      <a href="#experienced" class="btn-primary">Apply Now</a>
+      <a href="#roles" class="btn-ghost">See Open Roles</a>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <div class="hs-line"></div>
+    <span class="hs-txt">Scroll</span>
+  </div>
+</section>
+
+<div class="marq-wrap">
+  <div class="marq-track">
+    <div class="mi tb"><span>WE'RE HIRING</span><div class="mi-dot"></div></div>
+    <div class="mi"><span>INDIA'S FIRST MULTIMEDIA PRODUCTION HOUSE FOR FILMS</span><div class="mi-dot"></div></div>
+    <div class="mi tb"><span>GODMODE STUDIOZ</span><div class="mi-dot"></div></div>
+    <div class="mi"><span>BENGALURU · FULL TIME · YOUR HOMECOMING · 2026</span><div class="mi-dot"></div></div>
+    <div class="mi tb"><span>WE'RE HIRING</span><div class="mi-dot"></div></div>
+    <div class="mi"><span>INDIA'S FIRST MULTIMEDIA PRODUCTION HOUSE FOR FILMS</span><div class="mi-dot"></div></div>
+    <div class="mi tb"><span>GODMODE STUDIOZ</span><div class="mi-dot"></div></div>
+    <div class="mi"><span>BENGALURU · FULL TIME · YOUR HOMECOMING · 2026</span><div class="mi-dot"></div></div>
+  </div>
+</div>
+
+<section class="intro-block rv">
+  <div>
+    <span class="ib-tag">Who We Are</span>
+    <h2 class="ib-h">we're a little obsessed.<br><em>okay very obsessed.</em></h2>
+  </div>
+  <div>
+    <p class="ib-body">
+      About cinema. About craft. About getting it right. You'll fit right in.<br><br>
+      GodMode Studioz is India's first multimedia production house built exclusively for films. We don't make content. We make people <strong>feel things</strong> before a film even releases.<br><br>
+      Trailers. Teasers. Motion. Posters. Campaigns. Full chaos. Full cinema. And right now we're looking for a few more obsessed people.
+    </p>
+  </div>
+</section>
+
+<section class="vibe-section">
+  <div class="vibe-grid">
+    <div class="vibe-item rv">
+      <span class="vibe-label">The Work</span>
+      <div class="vibe-h">Blockbuster cinema. Every day.</div>
+      <p class="vibe-p">You'll be working alongside a team that has been a part of the biggest blockbusters in Indian cinema. The kind of work that moves millions before a film even releases.</p>
+    </div>
+    <div class="vibe-item rv d1">
+      <span class="vibe-label">The Culture</span>
+      <div class="vibe-h">This isn't a workplace.</div>
+      <p class="vibe-p">It's where film obsessed people finally feel at home. Loud opinions about cinema encouraged. Random film references in every meeting. Passion over everything. Always.</p>
+    </div>
+    <div class="vibe-item rv d2">
+      <span class="vibe-label">The Studio</span>
+      <div class="vibe-h">India's first of its kind.</div>
+      <p class="vibe-p">Built exclusively for cinematic visual production. Trusted by the biggest OTT platforms and production houses in the country. This is where the industry comes to make films hit harder.</p>
+    </div>
+  </div>
+</section>
+
+<section class="roles-section" id="roles">
+  <div class="noise"></div>
+  <div class="rs-head rv">
+    <span class="rs-tag">Open Roles · 2026</span>
+    <h2 class="rs-h">4 seats.<br><em>All of them dangerously fun.</em></h2>
+    <p class="rs-sub">Bengaluru. Full time. You'll be working with a team that has been part of blockbuster films of Indian cinema.</p>
+  </div>
+  <div class="roles-grid">
+    <div class="role-card rv">
+      <span class="role-num">01 · EDITOR</span>
+      <div class="role-title">Trailer and Teaser Editor</div>
+      <p class="role-copy">you watch a film and already know exactly where the trailer cut should be. don't you.</p>
+      <div class="role-tags">
+        <span class="role-tag">Trailer</span>
+        <span class="role-tag">Teaser</span>
+        <span class="role-tag">Promo</span>
+        <span class="role-tag">Song Cuts</span>
+        <span class="role-tag">Promo Edits</span>
+      </div>
+    </div>
+    <div class="role-card rv d1">
+      <span class="role-num">02 · MOTION</span>
+      <div class="role-title">Motion Graphics Artist</div>
+      <p class="role-copy">titles that hit before the film even starts. visuals that live in people's heads rent free. that's your thing, isn't it.</p>
+      <div class="role-tags">
+        <span class="role-tag">Title Sequence</span>
+        <span class="role-tag">Motion Visuals</span>
+        <span class="role-tag">Lyrical Videos</span>
+        <span class="role-tag">Motion Posters</span>
+      </div>
+    </div>
+    <div class="role-card rv d2">
+      <span class="role-num">03 · 3D</span>
+      <div class="role-title">3D Artist</div>
+      <p class="role-copy">you build things that don't exist. entire worlds. out of nothing. and somehow it looks like it was always there.</p>
+      <div class="role-tags">
+        <span class="role-tag">3D Titles</span>
+        <span class="role-tag">Environments</span>
+        <span class="role-tag">Character Work</span>
+        <span class="role-tag">VFX Assets</span>
+      </div>
+    </div>
+    <div class="role-card rv d3">
+      <span class="role-num">04 · DESIGN</span>
+      <div class="role-title">Concept Designer — Posters</div>
+      <p class="role-copy">one image. the entire soul of a film. that's the job. think you can handle it?</p>
+      <div class="role-tags">
+        <span class="role-tag">Key Art</span>
+        <span class="role-tag">Character Posters</span>
+        <span class="role-tag">Concept Visuals</span>
+        <span class="role-tag">Campaign Creatives</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="form-section" id="experienced">
+  <div class="noise"></div>
+  <div class="fc rv">
+    <span class="fc-tag">For Experienced Creatives</span>
+    <h2 class="fc-h">if your heart just did a little thing reading this —<br><em>come home.</em></h2>
+    <p class="fc-sub">Fill out the form. Tell us who you are, which role you're here for, and share your portfolio. We'll be in touch.</p>
+    <div class="form-embed">
+      <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSe0fDt8omBLpoKvY857olAffB2YOtWoKMszM8Tqa3VRYIU19w/viewform?embedded=true" width="1000" height="800" frameborder="0" marginheight="0" marginwidth="0">Loading</iframe>
+    </div>
+    <p class="alt-apply">
+      or email us at <a href="mailto:godmodestudiozhq@gmail.com">godmodestudiozhq@gmail.com</a><br>
+      reach us on Instagram <a href="https://instagram.com/godmodestudioz" target="_blank">@godmodestudioz</a>
+    </p>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<section class="fresher-section rv" id="freshers">
+  <div class="noise"></div>
+  <div class="fresher-inner">
+    <span class="fs2-tag">For Freshers and Interns · 2026</span>
+    <h2 class="fs2-h">ever thought you wanted to be part of <em>this chaos?</em></h2>
+    <p class="fs2-body">
+      you don't need years of experience. you need the right obsession.<br><br>
+      if you're someone who's <strong>interested in learning</strong>, someone who wants to grow inside a creative studio and be part of something real — we want to hear from you too. freshers and interns are welcome.<br><br>
+      just show us who you are, what you're drawn to, and the small experiments you've already been making on your own. that's enough to start the conversation.
+    </p>
+    <div class="fs2-list">
+      <span class="fs2-pill">Editing</span>
+      <span class="fs2-pill">Motion Graphics</span>
+      <span class="fs2-pill">3D and VFX</span>
+      <span class="fs2-pill">Graphic Design</span>
+      <span class="fs2-pill">Concept Art</span>
+      <span class="fs2-pill">Visual Storytelling</span>
+    </div>
+  </div>
+</section>
+
+<section class="form-section alt" id="fresher-apply">
+  <div class="noise"></div>
+  <div class="fc rv">
+    <span class="fc-tag">Fresher and Intern Applications</span>
+    <h2 class="fc-h">send us your resume.<br><em>show us your experiments.</em></h2>
+    <p class="fc-sub">Drop your resume, tell us your interested field, and share any small experiments or personal projects you've worked on. Doesn't have to be perfect. Just has to be real.</p>
+    <div class="form-embed">
+      <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSe0fDt8omBLpoKvY857olAffB2YOtWoKMszM8Tqa3VRYIU19w/viewform?embedded=true" width="1000" height="800" frameborder="0" marginheight="0" marginwidth="0">Loading</iframe>
+    </div>
+    <p class="alt-apply">
+      questions? reach us at <a href="mailto:godmodestudiozhq@gmail.com">godmodestudiozhq@gmail.com</a><br>
+      or DM us on <a href="https://instagram.com/godmodestudioz" target="_blank">@godmodestudioz</a>
+    </p>
+  </div>
+</section>
+
+<footer>
+  <div class="ft-inner">
+    <div>
+      <div class="ft-logo">God<em>Mode</em> Studioz</div>
+      <div class="ft-tagline">India's first multimedia production house for films.</div>
+    </div>
+    <div class="ft-socials">
+      <a href="mailto:godmodestudiozhq@gmail.com" class="ft-soc" title="Email">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+      </a>
+      <a href="https://www.instagram.com/godmodestudioz/" target="_blank" class="ft-soc" title="Instagram">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+      </a>
+    </div>
+  </div>
+  <div class="ft-bottom">
+    <span class="ft-copy">© 2026 GodMode Studioz. Bengaluru, India.</span>
+    <a href="mailto:godmodestudiozhq@gmail.com" class="ft-contact">godmodestudiozhq@gmail.com</a>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var dot=document.getElementById('cur');
+  var blob=document.getElementById('cur-blob');
+  if(!dot||!blob) return;
+  var mx=innerWidth/2,my=innerHeight/2,dx=mx,dy=my,bx=mx,by=my;
+  document.addEventListener('mousemove',function(e){mx=e.clientX;my=e.clientY;});
+  (function loop(){
+    dx+=(mx-dx)*.22;dy+=(my-dy)*.22;
+    bx+=(mx-bx)*.07;by+=(my-by)*.07;
+    dot.style.transform='translate('+dx+'px,'+dy+'px) translate(-50%,-50%)';
+    blob.style.transform='translate('+bx+'px,'+by+'px) translate(-50%,-50%)';
+    requestAnimationFrame(loop);
+  })();
+  document.querySelectorAll('a,button,.role-card,.vibe-item').forEach(function(el){
+    el.addEventListener('mouseenter',function(){document.body.classList.add('hov');});
+    el.addEventListener('mouseleave',function(){document.body.classList.remove('hov');});
+  });
+})();
+(function(){
+  var obs=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){if(e.isIntersecting)e.target.classList.add('in');});
+  },{threshold:.08});
+  document.querySelectorAll('.rv').forEach(function(el){obs.observe(el);});
+})();
+document.querySelectorAll('a[href^="#"]').forEach(function(a){
+  a.addEventListener('click',function(e){
+    var t=document.querySelector(this.getAttribute('href'));
+    if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'});}
+  });
+});
+</script>
+</body>
+</html>
